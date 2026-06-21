@@ -1,0 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Cairo:wght@200..1000&family=Cause:wght@100..900&family=Fascinate+Inline&family=Fredoka:wght@300..700&family=Kalnia+Glaze:wght@100..700&family=Monoton&family=Noto+Sans+Arabic:wght@100..900&display=swap');
+
+body {
+    margin: 0;
+    color: #302828;
+    background: #f5efe6;
+    font-family: "Cause", system-ui, sans-serif;;
+}

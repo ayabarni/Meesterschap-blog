@@ -1,11 +1,143 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import HomeNote from "../components/HomeNote.astro";
+const cards = [
+	{
+		number: "01",
+		label: "Proces",
+		title: "Sprint 0, Hackathon & Meesterproef",
+		text: " Een overzicht van mijn start, mijn bijdrage aan de hackathon en wat later wordt aangevuld voor de Meesterproef.",
+		link: "",
+		linkText: "Bekijk mijn proces",
+		className: "note-proces",
+	},
+	{
+		number: "02",
+		label: "Vakken",
+		title: "Projecten en inzichten",
+		text: "De uitkomsten van API, HCD, CSS en Browser Tech met mijn belangrijkste leerpunten en nieuwe inzichten.",
+		link: "",
+		linkText: "Bekijk alle vakken",
+		className: "note-vakken",
+	},
+	{
+		number: "03",
+		label: "Weekly Nerd",
+		title: "Sprint 0, Hackathon & Meesterproef",
+		text: "Verslagen van de Weekly Nerd sessies met onderwerpen, tools, voorbeelden en inzichten die ik interessant vond.",
+		link: "",
+		linkText: "Bekijk alle Weekly Nerds",
+		className: "note-weekly",
+	},
+	{
+		number: "04",
+		label: "Leerdoelen",
+		title: "Mijn ontwikkeling",
+		text: "  Drie leerdoelen waarmee ik verder werk richting de Meesterproef: samenwerken, organiseren en persoonlijker ontwerpen.",
+		link: "",
+		linkText: "Bekijk mijn leerdoelen",
+		className: "note-leerdoelen",
+	},
+];
 ---
 
 <Layout>
-	<Welcome />
+	<main>
+		<header class="intro">
+			<h1>Mijn <br />Meesterschap<br />journey</h1>
+			<p>
+				en persoonlijke blog over mijn proces binnen de minor Web: van
+				experimenten en vakken tot Weekly Nerds, leerdoelen en
+				reflecties
+			</p>
+		</header>
+		<section class="cards-notes">
+			{
+				cards.map((card) => (
+					<HomeNote
+						number={card.number}
+						label={card.label}
+						title={card.title}
+						text={card.text}
+						link={card.link}
+						linkText={card.linkText}
+						className={card.className}
+					/>
+				))
+			}
+		</section>
+	</main>
 </Layout>
+<style>
+	main {
+		min-height: 100vh;
+	}
+	.intro {
+		background-color: aquamarine;
+		min-height: 70vh;
+		padding: 2rem;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		position: relative;
+		overflow: hidden;
+		background-image: url(../assets/brown-paper-texture-background.jpg);
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+	}
+
+	.intro h1 {
+		margin: 0.5rem 0 1.25rem;
+		font-size: clamp(3rem, 12vw, 5rem);
+		overflow-wrap: break-word;
+		line-height: 1;
+	}
+	.intro p {
+		max-width: 34rem;
+		line-height: 1.5;
+	}
+	.cards-notes {
+		display: grid;
+		padding: 3rem;
+		gap: 3rem;
+	}
+	/* .cards-notes > * {
+		position: relative;
+		z-index: 1;
+	} */
+	@media (min-width: 900px) {
+		main {
+			min-height: 100vh;
+			display: grid;
+			grid-template-columns: 40% 1fr;
+			/* overflow: hidden; */
+		}
+		.intro {
+			position: sticky;
+			top: 0;
+			height: 100vh;
+			min-height: 100vh;
+			padding: 4rem;
+		}
+		.intro h1 {
+			font-size: clamp(4rem, 5.3vh, 6.2rem);
+			max-width: 22rem;
+		}
+		.cards-notes {
+			min-height: 100vh;
+			padding: 4rem;
+			display: grid;
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+			gap: 2rem;
+		}
+		:global(.card-note) {
+			min-height: 320px;
+		}
+		:global(.card-note.note-leerdoelen) {
+			transform: rotate(-1deg);
+			margin-top: 2rem;
+		}
+		
+	}
+</style>
