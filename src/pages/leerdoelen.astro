@@ -1,0 +1,89 @@
+---
+import Layout from "../layouts/Layout.astro";
+import LeerdoelCard from "../components/LeerdoelCard.astro";
+// import { number } from "astro:schema";
+
+const leerdoelen = [
+    {
+        number: "01",
+        title: "Samen ontwerpen",
+        text: "Dit leerdoel heb ik tijdens de Meesterproef goed kunnen ontwikkelen. Ik heb actief samengewerkt binnen mijn groep, taken afgestemd en feedback verwerkt. Ook heb ik meer ervaring gekregen met Git en GitHub, zoals commits, branches, pull requests en het oplossen van conflicten. Hierdoor ben ik zekerder geworden in technisch samenwerken binnen een groepsproject.",
+    },
+    {
+        number: "02",
+        title: "JavaScript beter begrijpen",
+        text: "Dit leerdoel kreeg tijdens de Meesterproef een andere invulling dan ik vooraf had verwacht. Binnen het Videlio-project hadden we weinig JavaScript nodig, omdat de focus vooral lag op Astro, HTML, CSS, componenten en toegankelijkheid. Wel heb ik tijdens Meesterschap workshops gevolgd die met JavaScript te maken hadden. Daardoor heb ik mijn basiskennis verder versterkt en beter begrepen wanneer JavaScript wel of niet nodig is binnen een project.",
+    },
+    {
+        number: "03",
+        title: "CSS en toegankelijkheid",
+        text: "Dit leerdoel heb ik vooral op het gebied van CSS en toegankelijkheid ontwikkeld. CSS-animaties waren voor de Videlio-website minder passend, omdat de website rustig, duidelijk en toegankelijk moest blijven voor de doelgroep. Wel heb ik veel gewerkt aan styling, responsive design, layout, spacing en visuele consistentie. Hierdoor ben ik sterker geworden in CSS en begrijp ik beter hoe ontwerpkeuzes invloed hebben op leesbaarheid, gebruiksvriendelijkheid en toegankelijkheid.",
+    },
+];
+---
+
+<Layout>
+    <main class="leerdoelen-pagina">
+        <header class="leerdoelen-intro">
+            <a href="/" class="terug-naar-home">Terug naar home</a>
+            <h1>Leerdoelen</h1>
+            <p>
+                Tijdens Meesterproef werk ik aan drie leerdoelen die passen bij
+                mijn ontwikkeling.
+            </p>
+        </header>
+        <section class="leerdoelen-grid">
+            {
+                leerdoelen.map((leerdoel) => (
+                    <LeerdoelCard
+                        number={leerdoel.number}
+                        title={leerdoel.title}
+                        text={leerdoel.text}
+                    />
+                ))
+            }
+        </section>
+    </main>
+</Layout>
+
+<style>
+    .leerdoelen-pagina {
+        padding: 1rem;
+    }
+    .leerdoelen-intro {
+        margin-bottom: 2rem;
+    }
+    .leerdoelen-intro h1 {
+        font-size: clamp(2.8rem, 14vw, 5rem);
+        line-height: 0.95;
+        margin: 0.5rem 0 1rem;
+    }
+    .leerdoelen-intro p {
+        line-height: 1.5;
+        max-width: 34rem;
+    }
+    .terug-naar-home {
+        display: inline-block;
+        margin-bottom: 1rem;
+        color: inherit;
+        font-weight: 700;
+    }
+    .leerdoelen-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        margin-top: 2rem;
+    }
+    @media (min-width: 800px) {
+        .leerdoelen-pagina {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .leerdoelen-grid {
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            align-items: start;
+        }
+    }
+</style>

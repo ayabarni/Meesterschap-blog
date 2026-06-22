@@ -8,13 +8,15 @@ import "../styles/global.css"
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		
+		
+		<link rel="icon" type ="image/x-icon" href="/public/images/blog-favicon.png">
 		<meta name="generator" content={Astro.generator} />
 		<title>Meesterschap</title>
 	</head>
 	<body>
 		<button class="theme-toggle" type="button" aria-label="wissel thema">☀️</button>
+		<!-- <a href="/" class="terug-naar-home">Terug naar home</a> -->
 		<slot />
 		<script>
 			const themaButton = document.querySelector(".theme-toggle");

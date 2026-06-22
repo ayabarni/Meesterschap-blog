@@ -1,0 +1,54 @@
+--- 
+type Props = {
+    number: string;
+    title: string;
+    text: string;
+}
+const  { number, title, text} = Astro.props;
+---
+<article class="leerdoel-card" data-number={number}>
+    <h2>{title}</h2>
+    <p>{text}</p>
+</article>
+<style>
+    .leerdoel-card {
+        position: relative;
+        padding: 1.25rem;
+		border: 1px solid #111;
+		border-radius: 1.5rem;
+		background: #fff8ee;
+		box-shadow: 6px 6px 0 #111;
+        overflow: hidden;
+    }
+    .leerdoel-card::before {
+        content: attr(data-number);
+        position: absolute;
+        right: 1rem;
+        top: 0.5rem;
+        font-weight: 800;
+        font-size: 3.5rem;
+        line-height: 1;
+        color: #767b39;
+        opacity: 0.5;
+    }
+    .leerdoel-card > * {
+        position: relative;
+        z-index: 1;
+    }
+    .leerdoel-card h2 {
+        margin: 0.5rem 0 1rem;
+        font-size: clamp(1.8rem, 8vw, 2.6rem);
+        line-height: 1;
+    }
+    .leerdoel-card p {
+        line-height: 1.55;
+    }
+    @media (min-width: 800px) {
+        .leerdoel-card {
+            min-height: 100%;
+        }
+        .leerdoel-card h2 {
+            font-size: 2rem;
+        }
+    }
+</style>

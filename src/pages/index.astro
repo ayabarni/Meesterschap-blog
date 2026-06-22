@@ -34,7 +34,7 @@ const cards = [
 		label: "Leerdoelen",
 		title: "Mijn ontwikkeling",
 		text: "  Drie leerdoelen waarmee ik verder werk richting de Meesterproef: samenwerken, organiseren en persoonlijker ontwerpen.",
-		link: "/Leerdoelen",
+		link: "/leerdoelen",
 		linkText: "Bekijk mijn leerdoelen",
 		className: "note-leerdoelen",
 	},
@@ -73,7 +73,7 @@ const cards = [
 		min-height: 100vh;
 	}
 	.intro {
-		background-color: aquamarine;
+		background-color: #eba625;
 		min-height: 70vh;
 		padding: 2rem;
 		display: flex;
@@ -81,10 +81,6 @@ const cards = [
 		justify-content: center;
 		position: relative;
 		overflow: hidden;
-		background-image: url(../assets/brown-paper-texture-background.jpg);
-		background-size: cover;
-		background-position: center;
-		background-repeat: no-repeat;
 	}
 
 	.intro h1 {
@@ -101,11 +97,20 @@ const cards = [
 		display: grid;
 		padding: 3rem;
 		gap: 3rem;
+		background-image: url(../assets/brown-paper-texture-background.jpg);
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
 	}
-	/* .cards-notes > * {
-		position: relative;
-		z-index: 1;
+	/* .note-proces {
+		background-color: #F7BBB0
 	} */
+	 :global(body.dark-theme) .intro {
+		background: radial-gradient(circle at top right, #abdbf2 0, transparent 28%),
+		radial-gradient(circle at bottom left, #f7bbb0 0, transparent 25%),
+		#171323;;
+		color:  #f8f1df;
+	 }
 	@media (min-width: 900px) {
 		main {
 			min-height: 100vh;
@@ -137,6 +142,16 @@ const cards = [
 		:global(.card-note.note-leerdoelen) {
 			transform: rotate(-1deg);
 			margin-top: 2rem;
+		}
+		:global(.card-note.note-vakken) {
+			transform: rotate(1deg);
+			margin-top: 2rem;
+		}
+		:global(.card-note.note-proces) {
+			transform: rotate(-1deg);
+		}
+		:global(.card-note.note-weekly ) {
+			transform: rotate(1deg);
 		}
 		
 	}

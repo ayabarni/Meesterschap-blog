@@ -17,7 +17,7 @@ const { number, label, title, text, link, linkText, className } = Astro.props;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        background-color: rgba(253, 241, 167, 0.681);
+        /* background-color: rgba(253, 241, 167, 0.681); */
         padding: 1.5em;
         overflow: hidden;
         border-radius: 0.5em;
@@ -25,10 +25,10 @@ const { number, label, title, text, link, linkText, className } = Astro.props;
         box-shadow: 8px 6px 0 #293603c1;
         gap: 0.4em;
         position: relative;
-        background-image: url(../assets/brown-paper-texture-background.jpg);
-		background-size: cover;
-		background-position: center;
-		background-repeat: no-repeat;
+        /* background-image: url(../assets/brown-paper-texture-background.jpg); */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
     }
     .card-note h2 {
         margin: 0.5rem 0 1rem;
@@ -55,6 +55,18 @@ const { number, label, title, text, link, linkText, className } = Astro.props;
         right: 1rem;
         top: 0.5rem;
     }
+    .note-proces {
+        background-color: #f7bbb0;
+    }
+    .note-vakken {
+        background: #dfe3b4;
+    }
+    .note-weekly {
+        background: #abdbf2;
+    }
+    .note-leerdoelen {
+        background: #c755554d;
+    }
     /* @media (min-width: 900px) {
         .card-note {
 			min-height: 320px;
@@ -64,5 +76,4 @@ const { number, label, title, text, link, linkText, className } = Astro.props;
 			margin-top: 2rem;
 		}
     }    */
-
 </style>
