@@ -1,10 +1,7 @@
 
-
-
 ### Meesterschap Blog
 
 Dit is mijn Meesterschap blog voor de minor Web. In deze website verzamel ik mijn proces, vakken, Weekly Nerds, leerdoelen en reflecties.
-
 De website is bedoeld als een persoonlijk overzicht van wat ik de afgelopen periode heb gemaakt, geleerd en onderzocht.
 
 
@@ -68,4 +65,30 @@ bronnen:
 -omzetten naar astro prpces:
 https://chatgpt.com/share/6a3955d4-16e4-83ed-8b14-a047b6980d65
 
+-Astro Docs. (z.d.). Astro components. Geraadpleegd voor het werken met Astro components, Astro.props en herbruikbare onderdelen zoals HomeNote, VakCard, WeeklyNerdCard en LeerdoelCard.
+https://docs.astro.build/en/basics/astro-components/
 
+-Astro Docs. (z.d.). Layouts. Geraadpleegd voor het opzetten van Layout.astro en het gebruiken van <slot /> om pagina-inhoud binnen een algemene layout te plaatsen.
+https://docs.astro.build/en/basics/layouts/
+
+-Astro Docs. (z.d.). TypeScript. Geraadpleegd voor het typen van component props met een Props type/interface in Astro components. Dit heb ik toegepast bij components zoals VakCard.astro, WeeklyNerdCard.astro en LeerdoelCard.astro.
+https://docs.astro.build/en/guides/typescript/
+
+-Astro Docs. (z.d.). Client-side scripts. Geraadpleegd voor het gebruiken van JavaScript binnen Astro, bijvoorbeeld voor tab-navigatie en de theme-toggle.
+https://docs.astro.build/en/guides/client-side-scripts/
+
+-TypeScript. (z.d.). Everyday Types. Geraadpleegd voor basis TypeScript-types zoals string, string[] en objecttypes. Deze types heb ik gebruikt om props duidelijker te maken en fouten zoals “implicit any” op te lossen.
+https://www.typescriptlang.org/docs/handbook/2/everyday-types.html
+
+- foto's van Weekly Nerd gasten:
+nils:
+https://9elements.com/blog/author/nils-binder/
+yolijn:
+linkedin.com/in/yolijn?originalSubdomain=nl
+Peter Paul Koch:
+https://www.quirksmode.org/about/
+Kilian:
+https://sessionize.com/kilian-valkhof/
+
+- paper texture for background
+https://pin.it/14zV9bwqM
