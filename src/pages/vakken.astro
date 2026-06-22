@@ -1,0 +1,214 @@
+---
+import Layout from "../layouts/Layout.astro";
+import VakCard from "../components/VakCard.astro";
+
+const vakken = [
+    {
+        id: "vak-api",
+        tab: "API",
+        image: "/images/api.jpg",
+        alt: "Screenshot van mijn API boekenapp",
+        title: "API",
+        subtitle: "Boekenapp met Astro en Open Library",
+        paragraphs: [
+            "Tijdens dit vak stond het werken met API’s en dynamische content centraal. In plaats van statische websites leerde ik hoe een applicatie data kan ophalen uit externe bronnen en deze dynamisch kan tonen binnen een interface.",
+            "Voor dit vak heb ik gewerkt aan een boekenapplicatie geïnspireerd op platforms zoals Goodreads. De applicatie haalt boekgegevens op via de Open Library API en toont deze op verschillende pagina’s, zoals een homepagina, zoekresultaten en detailpagina’s van boeken.",
+            "Tijdens het project werkte ik met Astro, dynamic routes, data fetching, localStorage en componenten. Daarnaast heb ik geëxperimenteerd met scroll animations, view transitions en de vormgeving van onderdelen zoals boekenkaarten en bookshelf-secties.",
+        ],
+        learned: [
+            "Data ophalen, verwerken en tonen vanuit een externe API.",
+            "Werken met Astro, componenten en dynamic routes.",
+            "LocalStorage gebruiken om boeken op te slaan.",
+        ],
+    },
+    {
+        id: "vak-hcd",
+        tab: "HCD",
+        image: "/images/hcd kopie.jpg",
+        alt: "Screenshot van mijn HCD prototype Kunst van de dag",
+        title: "Human Centered Design",
+        subtitle: "Kunst van de dag",
+        paragraphs: [
+            "Human Centered Design draait om ontwerpen vanuit de gebruiker. In dit vak leerde ik dat een goed ontwerp niet begint bij een idee of een mooie interface, maar bij het begrijpen van de persoon voor wie je ontwerpt.",
+            "Voor dit vak heb ik gewerkt aan een prototype voor een blinde gebruiker. Mijn idee was een toegankelijke kunstervaring waarin een gebruiker een kunstwerk niet hoeft te zien, maar kan beleven door middel van audio.",
+            "Het prototype heet Kunst van de dag. De gebruiker kan luisteren naar verschillende soorten uitleg, zoals een korte samenvatting, verdieping en sfeer. Daardoor wordt kunst niet alleen beschreven, maar ook op een andere manier beleefbaar gemaakt.",
+        ],
+        learned: [
+            "Ontwerpen vanuit één specifieke gebruiker.",
+            "Toegankelijkheid bekijken vanuit echte behoeften.",
+            "Feedback gebruiken om een ontwerp te verbeteren.",
+            "Testen en itereren tijdens het ontwerpproces.",
+        ],
+    },
+    {
+        id: "vak-css",
+        tab: "CSS",
+        image: "/images/css kopie.jpg",
+        alt: "Screenshot van mijn css portotype",
+        title: "CSS",
+        subtitle: "Pixel Puffy: interactieve CSS",
+        paragraphs: [
+            "In dit vak stond het onderzoeken van de kracht van CSS centraal. De focus lag op het maken van interactie, animatie en visuele veranderingen zonder JavaScript.",
+            "Voor dit vak heb ik Pixel Puffy gemaakt: een kleine interactieve CSS-game waarin een karakter kan bewegen, springen en visueel kan veranderen. De interactie werkt met radio buttons, checkboxes en CSS-selectors.",
+            "Tijdens dit vak heb ik gewerkt met :checked, sibling selectors, @keyframes, transforms, CSS nesting en container queries. Daardoor zag ik dat CSS niet alleen voor styling is, maar ook voor interactie en gedrag.",
+        ],
+        learned: [
+            "Interactie maken zonder JavaScript.",
+            ":checked combineren met sibling selectors.",
+            "Animaties maken met @keyframes.",
+        ],
+    },
+    {
+        id: "vak-bt",
+        tab: "Browser Tech",
+        image: "/images/BT kopie.jpg",
+        alt: "Screenshot van mijn browser tech prototype",
+        title: "Browser Technologies",
+        subtitle: "Interactief formulier met progressive enhancement",
+        paragraphs: [
+            "Browser Tech ging voor mij over beter begrijpen hoe een browser werkt en hoe je websites maakt die niet alleen mooi zijn, maar ook technisch logisch en bruikbaar blijven.",
+            "Voor dit vak werkte ik aan een interactieve formulierpagina. Niet alle vragen waren meteen relevant, daarom maakte ik vervolgvragen die pas zichtbaar worden wanneer de gebruiker een bepaald antwoord kiest.",
+            "Ik gebruikte HTML voor de basisstructuur, CSS voor de vormgeving en JavaScript voor de interactie. Ook zorgde ik ervoor dat verborgen velden disabled worden, zodat ze niet alleen visueel verborgen zijn, maar ook technisch niet actief blijven.",
+        ],
+        learned: [
+            "HTML-validatie gebruiken als basis.",
+            "JavaScript gebruiken voor extra interactie.",
+            "Verborgen onderdelen tonen en verbergen op basis van input.",
+            "Velden disablen wanneer ze niet relevant zijn.",
+        ],
+    },
+];
+---
+
+<Layout>
+    <main class="vakken-pagina">
+        <header class="vakken-intro">
+            <a href="/" class="terug-naar-home">Terug naar home</a>
+            <h1>Vakken</h1>
+            <p>
+                Een overzicht van de vakken binnen de minor Web. Per vak
+                beschrijf ik wat ik heb gemaakt, wat ik heb geleerd en welke
+                nieuwe inzichten ik heb meegenomen
+            </p>
+        </header>
+        <nav class="tab-nav" aria-label="vakken navigatie">
+            {
+                vakken.map((vak, index) => (
+                    <button
+                        class={`tab-button ${index === 0 ? "active" : ""}`}
+                        type="button"
+                        data-tab={vak.id}
+                    >
+                        {vak.tab}
+                    </button>
+                ))
+            }
+        </nav>
+        {
+            vakken.map((vak, index) => (
+                <section class={`tab-content ${index === 0 ? "active" : ""}`}
+                         id={vak.id}
+                >
+                    <VakCard
+                        image={vak.image}
+                        alt={vak.alt}
+                        title={vak.title}
+                        subtitle={vak.subtitle}
+                        paragraphs={vak.paragraphs}
+                        learned={vak.learned}
+                    />
+                </section>
+            ))
+        }
+    </main>
+</Layout>
+<script>
+	const buttons = document.querySelectorAll(".tab-button");
+	const contents = document.querySelectorAll(".tab-content");
+
+	buttons.forEach((button) => {
+		button.addEventListener("click", () => {
+			const selectedTab = button.getAttribute("data-tab");
+
+			if (!selectedTab) return;
+
+			buttons.forEach((btn) => btn.classList.remove("active"));
+			contents.forEach((content) => content.classList.remove("active"));
+
+			button.classList.add("active");
+
+			const activeContent = document.getElementById(selectedTab);
+			activeContent?.classList.add("active");
+		});
+	});
+</script>
+<style>
+	.vakken-pagina {
+		padding: 1rem;
+	}
+
+	.vakken-intro {
+		margin-bottom: 1.5rem;
+	}
+
+	.vakken-intro h1 {
+		font-size: clamp(2.5rem, 12vw, 4rem);
+		line-height: 1;
+		margin: 0.5rem 0 1rem;
+	}
+
+	.vakken-intro p {
+		line-height: 1.5;
+		max-width: 34rem;
+	}
+
+	.terug-naar-home {
+		display: inline-block;
+		margin-bottom: 1rem;
+		color: inherit;
+		font-weight: 700;
+	}
+
+	.tab-nav {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		padding: 0.5rem 0 1rem;
+		margin: 1.5rem 0;
+	}
+
+	.tab-button {
+		flex: 0 0 auto;
+		padding: 0.5rem 1rem;
+		border: 1px solid #111;
+		border-radius: 999px;
+		background: #fff8ee;
+		color: inherit;
+		font: inherit;
+		text-decoration: none;
+		font-weight: bold;
+		cursor: pointer;
+	}
+
+	.tab-button.active {
+		background: #767b39;
+		color: #eba625;
+		box-shadow: 3px 3px 0 #eba625;
+	}
+
+	.tab-content {
+		display: none;
+	}
+
+	.tab-content.active {
+		display: block;
+	}
+
+	@media (min-width: 800px) {
+		.vakken-pagina {
+			max-width: 900px;
+			margin: 0 auto;
+			padding: 2rem;
+		}
+	}
+</style>

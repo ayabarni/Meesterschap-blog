@@ -1,0 +1,109 @@
+---
+const { number, label, title, intro } = Astro.props;
+---
+
+<article class="timeline-item">
+    <div class="timeline-number">{number}</div>
+    <div class="timeline-card">
+        <div class="timeline-card-header">
+            <p class="timeline-label">{label}</p>
+            <h2>{title}</h2>
+            <p>{intro}</p>
+            <button class="toggle-button" type="button">Open</button>
+        </div>
+        <div class="timeline-content">
+            <slot />
+        </div>
+    </div>
+</article>
+<script>
+    const cards = document.querySelectorAll(".timeline-card");
+
+    cards.forEach((card) => {
+        const button = card.querySelector(".toggle-button");
+        const content = card.querySelector(".timeline-content");
+
+        button?.addEventListener("click", () => {
+            card.classList.toggle("is-open");
+
+            if (card.classList.contains("is-open")) {
+                button.textContent = "Sluit";
+            } else {
+                button.textContent = "Open";
+            }
+        });
+    });
+</script>
+<style>
+    .timeline-item {
+        display: grid;
+        grid-template-columns: 3rem 1fr;
+        gap: 2em;
+        position: relative;
+    }
+    .timeline-number {
+        display: grid;
+        position: relative;
+        place-items: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        font-weight: 700;
+        background-color: #f5ad22;
+        border: 1px solid #111;
+        z-index: 3;
+    }
+    .timeline-card {
+        background-color: #fffaf2;
+        border: 1px solid #111;
+        border-radius: 1.5rem;
+        box-shadow: 0.45rem 0.45rem 0 #111;
+        overflow: hidden;
+    }
+    .timeline-card-header {
+        padding: 2rem;
+    }
+    .timeline-content {
+		display: none;
+		border-top: 1px solid #111;
+		padding: 2rem;
+	}
+    .timeline-label {
+        text-transform: uppercase;
+		letter-spacing: 0.08em;
+		margin: 0 0 0.75rem;
+    }
+    .timeline-card h2 {
+        margin: 0 0 0.75rem;
+		font-size: clamp(2rem, 5vw, 3rem);
+		line-height: 1.1;
+    }
+    .toggle-button {
+        margin-top: 1rem;
+		background-color: #f5ad22;
+		border: 1px solid #111;
+		border-radius: 999px;
+		padding: 0.6rem 1rem;
+		font-weight: 700;
+    }
+    .timeline-card.is-open .timeline-content {
+		display: block;
+	}
+    .timeline-card.is-open .toggle-button {
+		background-color: #7c8536;
+		color: #f5ad22;
+	}
+    :global(.reflection-box) {
+		background-color: #e9edb8;
+		border: 1px solid #777;
+		border-radius: 0.8rem;
+		padding: 1rem;
+		margin-top: 1.25rem;
+	}
+    @media (max-width: 700px) {
+		.timeline-item {
+			grid-template-columns: 1fr;
+			gap: 1rem;
+		}
+	}
+</style>

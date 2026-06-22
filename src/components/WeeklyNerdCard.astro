@@ -1,0 +1,137 @@
+---
+type Term = {
+    name: string;
+    description: string;
+}
+type Props = {
+    image: string;
+    alt: string;
+    title: string;
+    speaker: string;
+	paragraphs: string[];
+	learned: string[];
+	terms: Term[];
+}
+const { image, alt, title, speaker, paragraphs, learned, terms } = Astro.props;
+---
+
+<article class="weekly-card">
+    <div class="speaker-header"> 
+        <img src={image} alt={alt} class="speaker-image">
+
+    </div>
+    <div>
+        <h2>{title}</h2>
+        <p class="speaker-name">{speaker}</p>
+    </div>
+    <div class="summary">
+        {paragraphs.map((paragraph) => (
+            <p>{paragraph}</p>
+        )
+    )}
+    </div>
+    <div class="info-box">
+        <h3>Wat heb ik geleerd?</h3>
+        <ul>
+            {learned.map((item) => ( 
+                <li>{item}</li>
+            ))}
+        </ul>
+
+    </div>
+    <div class="info-box">
+        <h3>Nieuwe termen</h3>
+        <ul>
+            {terms.map((term) => (
+                <li>
+                    <strong>{term.name}:</strong> {term.description}
+                </li>
+            )
+        
+        )}
+        </ul>
+    </div>
+
+</article>
+
+<style>
+	.weekly-card {
+		overflow: hidden;
+		border: 1px solid #111;
+		border-radius: 1.5rem;
+		background: #fff8ee;
+		box-shadow: 6px 6px 0 #111;
+		padding: 1.25rem;
+	}
+
+	.speaker-header {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		padding-bottom: 1.5rem;
+		border-bottom: 1px solid #111;
+		margin-bottom: 1.5rem;
+	}
+
+	.speaker-image {
+		width: 5rem;
+		height: 5rem;
+		border-radius: 50%;
+		object-fit: cover;
+		border: 1px solid #111;
+		flex-shrink: 0;
+	}
+
+	.weekly-card h2 {
+		font-size: clamp(2rem, 8vw, 3rem);
+		line-height: 0.95;
+		margin: 0 0 0.4rem;
+	}
+
+	.speaker-name {
+		margin: 0;
+		font-weight: 700;
+	}
+
+	.summary {
+		line-height: 1.6;
+	}
+
+	.summary p {
+		margin-bottom: 1rem;
+	}
+
+	.info-box {
+		margin-top: 1.25rem;
+		padding: 1rem;
+		border: 1px solid #111;
+		border-radius: 1rem;
+		background: #dfe3b4;
+	}
+
+	.info-box h3 {
+		margin-top: 0;
+		margin-bottom: 0.75rem;
+	}
+
+	.info-box ul {
+		padding-left: 1.2rem;
+		margin: 0;
+	}
+
+	.info-box li {
+		margin-bottom: 0.6rem;
+		line-height: 1.45;
+	}
+
+	@media (min-width: 800px) {
+		.weekly-card {
+			padding: 2rem;
+		}
+
+		.speaker-image {
+			width: 6rem;
+			height: 6rem;
+		}
+	}
+</style>

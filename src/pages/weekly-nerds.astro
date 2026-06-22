@@ -1,0 +1,354 @@
+---
+import Layout from "../layouts/Layout.astro";
+import WeeklyNerdCard from "../components/WeeklyNerdCard.astro";
+
+const nerds = [
+    {
+        id: "nerd-1",
+        tab: "Kilian Valkhof",
+        image: "/images/kilian kopie.jpg",
+        alt: "Kilian Valkhof",
+        title: "Stop using JS for that",
+        speaker: "Kilian Valkhof",
+        paragraphs: [
+            "In dit Weekly Nerd sprak Kilian Valkhof over het idee dat het niet nodig is om meteen voor alles JavaScript te gebruiken. Veel interacties die vroeger met JavaScript werden uitgevoerd, kunnen nu met HTML en CSS worden gerealiseerd.",
+            "Een belangrijk concept in de sessie was het principe van minimale kracht. Dit betekent dat je de minst krachtige technologie gebruikt die geschikt is voor de taak. Als iets met HTML kan worden gedaan, gebruik dan HTML. Als dat niet mogelijk is, kijk dan naar CSS. Pas daarna gebruik je JavaScript.",
+            "Het bleek ook dat JavaScript gevoeliger is voor storingen dan HTML en CSS. Browsers moeten meer moeite doen om JavaScript uit te voeren, en als JavaScript niet goed werkt, kan een belangrijk deel van de website uitvallen. HTML en CSS zijn vaak stabieler en blijven langer goed werken.",
+        ],
+        learned: [
+            "Gebruik JavaScript niet direct als HTML of CSS voldoende is.",
+            "De eenvoudigste techniek is vaak de krachtigste en meest stabiele.",
+            "HTML bevat al veel ingebouwde interactieve elementen.",
+            "Animaties moeten rekening houden met prefers-reduced-motion.",
+            "JavaScript is nuttig, maar moet bewust worden gebruikt.",
+        ],
+        terms: [
+            {
+                name: "Polypane",
+                description:
+                    "een browser/tool die helpt bij responsive design en testen",
+            },
+            {
+                name: "dialog",
+                description: "een HTML-element voor modals of pop-ups",
+            },
+            {
+                name: "Scroll driven animations",
+                description:
+                    "animaties die reageren op het scrollgedrag van de gebruiker",
+            },
+            {
+                name: "Custom switch",
+                description:
+                    "een aangepaste aan/uit-knop, vaak gemaakt met een checkbox",
+            },
+        ],
+    },
+    {
+        id: "nerd-2",
+        tab: "Peter Paul Koch",
+        image: "/images/ppkfoto kopie.jpg",
+        alt: "Peter Paul Koch",
+        title: "Browsers & support detection",
+        speaker: "Peter Paul Koch",
+        paragraphs: [
+            "Tijdens deze sessie van Weekly Nerd vertelde Peter Paul Koch hoe browsers werken en hoe belangrijk browserondersteuning is bij webontwikkeling.",
+            "Ik heb geleerd dat een browser niet zomaar een programma is dat een website opent, maar uit verschillende componenten bestaat die samenwerken. HTML, CSS en JavaScript worden stap voor stap verwerkt, totdat de pagina uiteindelijk aan de gebruiker wordt getoond.",
+            "Het renderen was een van de belangrijkste punten die ik heb onthouden. De browser haalt eerst de bestanden op en verwerkt ze, en bouwt vervolgens de pagina op. Hierdoor begrijp ik nu beter waarom sommige websites traag laden en hoe CSS en JavaScript de prestaties kunnen beïnvloeden.",
+        ],
+        learned: [
+            "De browser verwerkt HTML, CSS en JavaScript stap voor stap.",
+            "CSS en JavaScript kunnen de laadtijd beïnvloeden.",
+            "defer en async kunnen helpen om JavaScript slimmer te laden.",
+            "Het is belangrijk om in meerdere browsers te testen.",
+            "Browserondersteuning hoort bij een goede gebruikerservaring.",
+        ],
+        terms: [
+            {
+                name: "Rendering",
+                description:
+                    "het proces waarbij code wordt omgezet naar een zichtbare webpagina",
+            },
+            {
+                name: "Rendering engine",
+                description:
+                    "het onderdeel van de browser dat HTML en CSS verwerkt",
+            },
+            {
+                name: "DOM",
+                description:
+                    "de structuur van de HTML die JavaScript kan aanpassen",
+            },
+            {
+                name: "Render blocking",
+                description:
+                    "wanneer bestanden het laden van de pagina vertragen",
+            },
+        ],
+    },
+    {
+        id: "nerd-3",
+        tab: "Nils Binder",
+        image: "/images/Nils kopie.jpeg",
+        alt: "Nils Binder",
+        title: "Creative CSS layouts",
+        speaker: "Nils Binder",
+        paragraphs: [
+            "Tijdens deze Weekly Nerd vertelde Nils Binder over zijn werk bij 9elements en hoe hij CSS gebruikt om creatieve en flexibele layouts te maken. Hij liet verschillende projecten zien, zoals websites voor een Duitse voetbalclub en projecten waarin kleurcontrast en design systematisch werden onderzocht.",
+            "Wat ik interessant vond, is dat hij vertelde hoe webdesign door tools zoals Figma, Tailwind en AI soms minder vernieuwend kan worden. Veel websites gebruiken dezelfde soort opbouw, zoals een grote hero section met daaronder drie kolommen. Daardoor lijken veel layouts op elkaar.",
+            "Nils liet ook zien hoe krachtig CSS kan zijn voor complexe layouts. Bijvoorbeeld kalenders met subgrids, sticky elementen en overlappende afspraken. Ook kwamen technieken zoals first-line, spritesheet animaties en view transitions voorbij. Hierdoor zag ik dat CSS niet alleen bedoeld is voor styling, maar ook voor structuur, beweging en beleving.",
+        ],
+        learned: [
+            "Bij layout is het beter om te denken in verhoudingen in plaats van vaste pixels.",
+            "View transitions kunnen zorgen voor soepelere overgangen tussen pagina’s.",
+            "Creatieve CSS kan een website meer eigenheid geven.",
+        ],
+        terms: [
+            {
+                name: "CSS Grid",
+                description:
+                    "een CSS-techniek waarmee je layouts kunt maken met rijen en kolommen",
+            },
+            {
+                name: "Subgrid",
+                description: "een grid binnen een bestaande gridstructuur",
+            },
+            {
+                name: "View Transitions",
+                description:
+                    "een techniek waarmee overgangen tussen pagina’s vloeiender kunnen worden gemaakt",
+            },
+        ],
+    },
+    {
+        id: "nerd-4",
+        tab: "Robbert & Yolijn",
+        image: "/images/yolijn.jpeg",
+        alt: "Robbert en Yolijn",
+        title: "Toegankelijke formulieren",
+        speaker: "Robbert & Yolijn",
+        paragraphs: [
+            "Tijdens deze Weekly Nerd ging het over het ontwerpen van formulieren die duidelijk, consistent en toegankelijk zijn voor verschillende gebruikers.",
+            "Een belangrijk punt was toegankelijkheid. Knoppen en klikbare elementen moeten groot genoeg zijn, minimaal 44 bij 44 pixels. Daarnaast moet er genoeg kleurcontrast zijn en moet het formulier volledig met het toetsenbord te gebruiken zijn. Een duidelijke focus state helpt gebruikers om te zien waar ze zich op dat moment bevinden.",
+            "Tot slot vond ik het interessant dat validatie flexibel moet zijn. Een formulier moet duidelijke regels geven, maar geen onnodige beperkingen opleggen. Bijvoorbeeld bij een postcode moet het mogelijk zijn om deze met of zonder spatie in te vullen.",
+        ],
+        learned: [
+            "Formulieren moeten voorspelbaar en consistent zijn.",
+            "Labels horen duidelijk bij invoervelden te staan.",
+            "Foutmeldingen en verplichte velden moeten ook hoorbaar zijn voor schermlezers.",
+        ],
+        terms: [
+            {
+                name: "Focus state",
+                description:
+                    "visuele aanduiding waarmee je ziet welk element actief is",
+            },
+            {
+                name: "Validatie",
+                description: "controleren of de ingevulde gegevens kloppen",
+            },
+            {
+                name: "Klikruimte",
+                description:
+                    "de grootte van een klikbaar element, zoals een knop of link",
+            },
+        ],
+    },
+    {
+        id: "nerd-5",
+        tab: "Rosa",
+        image: "/images/Rosa.jpeg",
+        alt: "Rosa Schuurmans",
+        title: "Hacken, maken en technologie begrijpen",
+        speaker: "Rosa Schuurmans",
+        paragraphs: [
+            "Tijdens deze Weekly Nerd vertelde Rosa over hacken, zelf maken en anders kijken naar technologie. Een hacker is niet alleen iemand die systemen kraakt, maar iemand die technologie begrijpt en op een creatieve manier gebruikt.",
+            "Wat ik interessant vond, is het idee “doe het zelf, maar niet alleen”. Door samen dingen uit elkaar te halen, te repareren of opnieuw te gebruiken, krijg je meer controle over technologie.",
+            "Daarnaast werd uitgelegd dat een website uiteindelijk ook een fysieke plek heeft: een server. Hierdoor besefte ik dat websites niet alleen digitaal zijn, maar ook impact hebben op energie, onderhoud en infrastructuur.",
+        ],
+        learned: [
+            "Technologie kun je beter begrijpen door zelf te maken en te onderzoeken.",
+            "Samen leren en repareren geeft meer controle over technologie.",
+            "Websites hebben ook een fysieke kant, zoals servers en energiegebruik.",
+        ],
+        terms: [
+            {
+                name: "Server",
+                description: "een computer waarop een website draait",
+            },
+            {
+                name: "Hacker",
+                description:
+                    "iemand die technologie begrijpt en op een creatieve manier gebruikt",
+            },
+            {
+                name: "Progressive enhancement",
+                description:
+                    "eerst de basis laten werken, daarna extra lagen toevoegen",
+            },
+        ],
+    },
+    {
+        id: "nerd-6",
+        tab: "Johann Huijkman",
+        image: "/images/1776864225501.jpeg",
+        alt: "Johann Huijkman",
+        title: "Accessibility",
+        speaker: "Johann Huijkman",
+        paragraphs: [
+            "In deze sessie van Weekly Nerd hebben we het gehad over toegankelijkheid en hoe mensen met verschillende behoeften omgaan met websites.",
+            "Een belangrijke les die we uit deze sessie hebben geleerd, is dat je iets niet toegankelijk kunt ontwerpen zonder de mensen te betrekken voor wie je ontwerpt. Toegankelijkheid gaat dus niet alleen over het volgen van regels, maar ook over testen, experimenteren en aanpassen.",
+            "We bespraken ook de WCAG-richtlijnen. Een website moet onder andere begrijpelijk, robuust en gebruiksvriendelijk zijn. Daarnaast werd duidelijk dat afbeeldingen altijd een alt-attribuut moeten bevatten. Soms is de alt-tekst beschrijvend, en soms kan deze leeg zijn als de afbeelding louter decoratief is.",
+        ],
+        learned: [
+            "Toegankelijkheid moet je niet alleen bedenken, maar ook testen met echte gebruikers.",
+            "Duidelijke instructies en meldingen maken een website begrijpelijker.",
+            "Een rustige en voorspelbare interface helpt gebruikers die gevoelig zijn voor prikkels.",
+        ],
+        terms: [
+            {
+                name: "WCAG",
+                description:
+                    "richtlijnen voor het maken van toegankelijke websites",
+            },
+            {
+                name: "Alt-tekst",
+                description:
+                    "tekst die beschrijft wat er op een afbeelding staat of wat de functie van een afbeelding is",
+            },
+            {
+                name: "Voorspelbaarheid",
+                description:
+                    "wanneer een interface logisch en herkenbaar werkt voor de gebruiker",
+            },
+        ],
+    },
+];
+---
+
+<Layout>
+    <main class="weekly-nerds-page">
+        <header class="weekly-nerds-intro">
+            <a href="/" class="terug-naar-home">Terug naar home</a>
+            <h1>Weekly Nerds</h1>
+        </header>
+        <nav class="tab-nav" aria-label="weekly nerds navigatie">
+            {
+                nerds.map((nerd, index) => (
+                    <button
+                        class={`tab-button ${index === 0 ? "active" : ""}`}
+                        type="button"
+                        data-tab={nerd.id}
+                    >
+                        {nerd.tab}
+                    </button>
+                ))
+            }
+        </nav>
+
+        {
+            nerds.map((nerd, index) => (
+                <section
+                    class={`tab-content ${index === 0 ? "active" : ""}`}
+                    id={nerd.id}
+                >
+                    <WeeklyNerdCard
+                        image={nerd.image}
+                        alt={nerd.alt}
+                        title={nerd.title}
+                        speaker={nerd.speaker}
+                        paragraphs={nerd.paragraphs}
+                        learned={nerd.learned}
+                        terms={nerd.terms}
+                    />
+                </section>
+            ))
+        }
+    </main>
+</Layout>
+<script>
+    const buttons = document.querySelectorAll(".tab-button");
+    const contents = document.querySelectorAll(".tab-content");
+
+    buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+            const selectedTab = button.getAttribute("data-tab");
+
+            if (!selectedTab) return;
+
+            buttons.forEach((btn) => btn.classList.remove("active"));
+            contents.forEach((content) => content.classList.remove("active"));
+
+            button.classList.add("active");
+
+            const activeContent = document.getElementById(selectedTab);
+            activeContent?.classList.add("active");
+        });
+    });
+</script>
+
+<style>
+    .weekly-nerds-page {
+        padding: 1rem;
+    }
+
+    .weekly-nerds-intro {
+        margin-bottom: 1.5rem;
+    }
+
+    .weekly-nerd-intro h1 {
+        font-size: clamp(2.8rem, 12vw, 4.5rem);
+        line-height: 1;
+        margin: 0.5rem 0 1rem;
+    }
+
+    .terug-naar-home {
+        display: inline-block;
+        margin-bottom: 1rem;
+        color: inherit;
+        font-weight: 700;
+    }
+
+    .tab-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding: 0.5rem 0 1rem;
+        margin: 1.5rem 0;
+    }
+
+    .tab-button {
+        flex: 0 0 auto;
+        padding: 0.5rem 1rem;
+        border: 1px solid #111;
+        border-radius: 999px;
+        background: #fff8ee;
+        color: inherit;
+        font: inherit;
+        text-decoration: none;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .tab-button.active {
+        background: #767b39;
+        color: #eba625;
+        box-shadow: 3px 3px 0 #eba625;
+    }
+
+    .tab-content {
+        display: none;
+    }
+
+    .tab-content.active {
+        display: block;
+    }
+
+    @media (min-width: 800px) {
+        .weekly-nerd-pagina {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+    }
+</style>

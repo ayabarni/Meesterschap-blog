@@ -14,7 +14,23 @@ import "../styles/global.css"
 		<title>Meesterschap</title>
 	</head>
 	<body>
+		<button class="theme-toggle" type="button" aria-label="wissel thema">☀️</button>
 		<slot />
+		<script>
+			const themaButton = document.querySelector(".theme-toggle");
+			const savedTheme = localStorage.getItem("theme");
+			
+			if (savedTheme === "dark") {
+				document.body.classList.add("dark-theme");
+				if(themaButton) themaButton.textContent = "🌙";
+			}
+			themaButton?.addEventListener("click", () => {
+				document.body.classList.toggle("dark-theme");
+				const isDark = document.body.classList.contains("dark-theme");
+				localStorage.setItem("theme", isDark ? "dark" : "light");
+				themaButton.textContent = isDark ? "🌙" : "☀️";
+			});
+			</script>
 	</body>
 </html>
 
